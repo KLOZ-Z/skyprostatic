@@ -1,15 +1,14 @@
 package transport;
 
-import drivers.Ddriver;
+import drivers.Cdriver;
 import interfaces.Competitor;
 
-public class Bus<T extends Ddriver> extends Transport implements Competitor {
+public class Truck<T extends Cdriver> extends Transport implements Competitor {
     private T driver;
-    public Bus(String brand, String model, double engineVolume, T driver) {
+    public Truck(String brand, String model, double engineVolume,T driver) {
         super(brand, model, engineVolume);
         this.driver = driver;
     }
-
 
     public void participate(){
         System.out.println("водитель "+this.driver.getFio()+" управляет автомобилем "+this.getModel()+" "+this.getBrand()+" и будет участвовать в заезде");
@@ -22,11 +21,11 @@ public class Bus<T extends Ddriver> extends Transport implements Competitor {
 
     @Override
     public void fastestLap() {
-        System.out.println(this.getBrand()+" "+this.getModel()+"Лучшее время круга: "+"00:09:20");
+        System.out.println(this.getBrand()+" "+this.getModel()+"Лучшее время круга: "+"00:06:30");
     }
 
     @Override
     public void maxSpeed() {
-        System.out.println(this.getBrand()+" "+this.getModel()+" Максимальная скорость: "+"80"+" км/ч");
+        System.out.println(this.getBrand()+" "+this.getModel()+" Максимальная скорость: "+"100"+" км/ч");
     }
 }
