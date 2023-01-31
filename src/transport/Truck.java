@@ -1,17 +1,25 @@
 package transport;
 
 import drivers.Cdriver;
+import enums.TransportType;
+import enums.WeightType;
 import interfaces.Competitor;
 
 public class Truck<T extends Cdriver> extends Transport implements Competitor {
     private T driver;
-    public Truck(String brand, String model, double engineVolume,T driver) {
-        super(brand, model, engineVolume);
+    private WeightType weight;
+    public Truck(String brand, String model, double engineVolume, TransportType type, T driver, WeightType weight) {
+        super(brand, model, engineVolume, type);
         this.driver = driver;
+        this.weight = weight;
     }
 
     public void participate(){
         System.out.println("водитель "+this.driver.getFio()+" управляет автомобилем "+this.getModel()+" "+this.getBrand()+" и будет участвовать в заезде");
+    }
+
+    public String printweight(){
+        return this.getBrand() +" "+ this.getModel()+" "+this.weight;
     }
 
     @Override
@@ -28,4 +36,6 @@ public class Truck<T extends Cdriver> extends Transport implements Competitor {
     public void maxSpeed() {
         System.out.println(this.getBrand()+" "+this.getModel()+" Максимальная скорость: "+"100"+" км/ч");
     }
+
+
 }

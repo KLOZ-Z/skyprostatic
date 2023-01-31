@@ -1,12 +1,17 @@
 package transport;
 
+import enums.BodyType;
+import enums.TransportType;
+
 public abstract class Transport {
     private final String brand;
     private final String model;
 
     private double engineVolume;
 
-    public Transport(String brand,String model, double engineVolume){
+    public TransportType type;
+
+    public Transport(String brand,String model, double engineVolume, TransportType type){
         if(brand==null)
             this.brand = "default";
         else
@@ -25,6 +30,7 @@ public abstract class Transport {
             this.engineVolume = 1.5;
         else
             this.engineVolume = engineVolume;
+        this.type = type;
     }
 
 
@@ -58,6 +64,13 @@ public abstract class Transport {
 
     }
 
+    public void printType(){
+        if(type==null){
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        else
+            System.out.println(type);
+    }
 
     @Override
     public String toString(){

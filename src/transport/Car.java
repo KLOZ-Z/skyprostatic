@@ -2,17 +2,30 @@ package transport;
 
 import drivers.Bdriver;
 import drivers.Driver;
+import enums.BodyType;
+import enums.TransportType;
 import interfaces.Competitor;
+
+
 
 public class Car<T extends Bdriver> extends Transport implements Competitor {
     private T driver;
-    public Car(String brand, String model, double engineVolume, T driver) {
-        super(brand, model, engineVolume);
+    private BodyType btype;
+
+
+
+    public Car(String brand, String model, double engineVolume, TransportType type, T driver, BodyType btype) {
+        super(brand, model, engineVolume, type);
         this.driver = driver;
+        this.btype = btype;
     }
 
     public void participate(){
         System.out.println("водитель "+this.driver.getFio()+" управляет автомобилем "+this.getModel()+" "+this.getBrand()+" и будет участвовать в заезде");
+    }
+
+    public String printtype(){
+        return this.getBrand() +" "+ this.getModel()+this.btype;
     }
 
     @Override
@@ -29,4 +42,5 @@ public class Car<T extends Bdriver> extends Transport implements Competitor {
     public void maxSpeed() {
         System.out.println(this.getBrand()+" "+this.getModel()+" Максимальная скорость: "+"150"+" км/ч");
     }
+
 }
