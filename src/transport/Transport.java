@@ -64,9 +64,7 @@ public abstract class Transport {
 
     }
 
-    public void passDiagnostic() {
-
-    }
+    public abstract void passDiagnostic();
 
 
     public void printType(){
