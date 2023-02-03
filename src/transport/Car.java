@@ -43,4 +43,8 @@ public class Car<T extends Bdriver> extends Transport implements Competitor {
         System.out.println(this.getBrand()+" "+this.getModel()+" Максимальная скорость: "+"150"+" км/ч");
     }
 
+    @Override
+    public void passDiagnostic() {
+        System.out.println("Диагностика пройдена");
+    }
 }

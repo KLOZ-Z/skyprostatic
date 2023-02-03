@@ -64,6 +64,11 @@ public abstract class Transport {
 
     }
 
+    public void passDiagnostic() {
+
+    }
+
+
     public void printType(){
         if(type==null){
             System.out.println("Данных по транспортному средству недостаточно");

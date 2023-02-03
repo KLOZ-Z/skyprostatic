@@ -4,6 +4,7 @@ import drivers.Ddriver;
 import enums.CapacityType;
 import enums.TransportType;
 import enums.WeightType;
+import exceptions.TransportTypeException;
 import interfaces.Competitor;
 
 public class Bus<T extends Ddriver> extends Transport implements Competitor {
@@ -38,5 +39,14 @@ public class Bus<T extends Ddriver> extends Transport implements Competitor {
     @Override
     public void maxSpeed() {
         System.out.println(this.getBrand()+" "+this.getModel()+" Максимальная скорость: "+"80"+" км/ч");
+    }
+
+    @Override
+    public void passDiagnostic() {
+        try {
+            throw new TransportTypeException("Автобусы не могут проходить диагноситку");
+        } catch (TransportTypeException e) {
+            System.out.println(e);
+        }
     }
 }

@@ -17,11 +17,9 @@ public class Main {
         Car<Bdriver> car1 = new Car<>("Brand1","Model1", 3.0,null,driverb, BodyType.SEDAN);
         Truck<Cdriver> truck1 = new Truck<>("Brand1","Model1", 3.0, TransportType.TRUCK,driverc, WeightType.N2);
         Bus<Ddriver> bus1 = new Bus<>("Brand1","Model1", 3.0,TransportType.BUS,driverd, CapacityType.MEDIUM);
-        System.out.println(car1.printtype());
-        System.out.println(truck1.printweight());
-        System.out.println(bus1.printcapacity());
-        car1.printType();
-        bus1.printType();
+        car1.passDiagnostic();
+        truck1.passDiagnostic();
+        bus1.passDiagnostic();
     }
 
 }
