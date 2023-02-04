@@ -42,7 +42,7 @@ public class Bus<T extends Ddriver> extends Transport implements Competitor {
     }
 
     @Override
-    public void passDiagnostic() {
-        System.out.println("error");
+    public void passDiagnostic() throws TransportTypeException {
+        throw new TransportTypeException("Автобусы не могут проходить диагноситку");
     }
 }

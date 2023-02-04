@@ -19,24 +19,10 @@ public class Main {
         Car<Bdriver> car1 = new Car<>("Brand1","Model1", 3.0,null,driverb, BodyType.SEDAN);
         Truck<Cdriver> truck1 = new Truck<>("Brand1","Model1", 3.0, TransportType.TRUCK,driverc, WeightType.N2);
         Bus<Ddriver> bus1 = new Bus<>("Brand1","Model1", 3.0,TransportType.BUS,driverd, CapacityType.MEDIUM);
-        setDiagnostic(car1);
-        setDiagnostic(truck1);
-        setDiagnostic(bus1);
-    }
-
-    public static boolean isBus(Object object){
-        if (object instanceof Bus<?>){
-            return true;
-        }
-        else return false;
-    }
-
-    public static void setDiagnostic(Transport object){
         try {
-            if (isBus(object))
-                throw new TransportTypeException("Автобусы не могут проходить диагноситку");
-            else
-                object.passDiagnostic();
+            car1.passDiagnostic();
+            truck1.passDiagnostic();
+            bus1.passDiagnostic();
         } catch (TransportTypeException e) {
             System.out.println(e);
         }

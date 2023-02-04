@@ -2,6 +2,7 @@ package transport;
 
 import enums.BodyType;
 import enums.TransportType;
+import exceptions.TransportTypeException;
 
 public abstract class Transport {
     private final String brand;
@@ -64,7 +65,7 @@ public abstract class Transport {
 
     }
 
-    public abstract void passDiagnostic();
+    public abstract void passDiagnostic() throws TransportTypeException;
 
 
     public void printType(){
