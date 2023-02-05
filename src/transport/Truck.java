@@ -3,6 +3,7 @@ package transport;
 import drivers.Cdriver;
 import enums.TransportType;
 import enums.WeightType;
+import exceptions.TransportTypeException;
 import interfaces.Competitor;
 
 public class Truck<T extends Cdriver> extends Transport implements Competitor {
@@ -38,8 +39,11 @@ public class Truck<T extends Cdriver> extends Transport implements Competitor {
     }
 
     @Override
-    public void passDiagnostic() {
+    public void passDiagnostic() throws TransportTypeException {
         System.out.println("Диагностика пройдена");
+        if(false){
+            throw new TransportTypeException("Диагностика не пройдена");
+        }
     }
 
 }

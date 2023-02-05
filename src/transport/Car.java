@@ -4,6 +4,7 @@ import drivers.Bdriver;
 import drivers.Driver;
 import enums.BodyType;
 import enums.TransportType;
+import exceptions.TransportTypeException;
 import interfaces.Competitor;
 
 
@@ -44,7 +45,10 @@ public class Car<T extends Bdriver> extends Transport implements Competitor {
     }
 
     @Override
-    public void passDiagnostic() {
+    public void passDiagnostic() throws TransportTypeException {
         System.out.println("Диагностика пройдена");
+        if(false){
+            throw new TransportTypeException("Диагностика не пройдена");
+        }
     }
 }

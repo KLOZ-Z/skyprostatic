@@ -21,7 +21,15 @@ public class Main {
         Bus<Ddriver> bus1 = new Bus<>("Brand1","Model1", 3.0,TransportType.BUS,driverd, CapacityType.MEDIUM);
         try {
             car1.passDiagnostic();
+        } catch (TransportTypeException e) {
+            System.out.println(e);
+        }
+        try {
             truck1.passDiagnostic();
+        } catch (TransportTypeException e) {
+            System.out.println(e);
+        }
+        try {
             bus1.passDiagnostic();
         } catch (TransportTypeException e) {
             System.out.println(e);
