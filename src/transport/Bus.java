@@ -6,13 +6,16 @@ import enums.TransportType;
 import enums.WeightType;
 import exceptions.TransportTypeException;
 import interfaces.Competitor;
+import mechanic.Mechanic;
+
+import java.util.ArrayList;
 
 public class Bus<T extends Ddriver> extends Transport implements Competitor {
     private T driver;
 
     private CapacityType capacity;
-    public Bus(String brand, String model, double engineVolume, TransportType type, T driver, CapacityType capacity) {
-        super(brand, model, engineVolume, type);
+    public Bus(String brand, String model, double engineVolume, TransportType type, ArrayList<Mechanic> mechanicList, T driver, CapacityType capacity) {
+        super(brand, model, engineVolume, type, mechanicList);
         this.driver = driver;
         this.capacity = capacity;
     }
@@ -24,6 +27,14 @@ public class Bus<T extends Ddriver> extends Transport implements Competitor {
 
     public String printcapacity(){
         return this.getBrand() +" "+ this.getModel()+" "+this.capacity;
+    }
+
+    public T getDriver() {
+        return driver;
+    }
+
+    public void printDriver(){
+        System.out.println(driver.getFio());
     }
 
     @Override

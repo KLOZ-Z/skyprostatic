@@ -6,7 +6,9 @@ import enums.BodyType;
 import enums.TransportType;
 import exceptions.TransportTypeException;
 import interfaces.Competitor;
+import mechanic.Mechanic;
 
+import java.util.ArrayList;
 
 
 public class Car<T extends Bdriver> extends Transport implements Competitor {
@@ -15,8 +17,8 @@ public class Car<T extends Bdriver> extends Transport implements Competitor {
 
 
 
-    public Car(String brand, String model, double engineVolume, TransportType type, T driver, BodyType btype) {
-        super(brand, model, engineVolume, type);
+    public Car(String brand, String model, double engineVolume, TransportType type, ArrayList<Mechanic> mechanicList, T driver, BodyType btype) {
+        super(brand, model, engineVolume, type, mechanicList);
         this.driver = driver;
         this.btype = btype;
     }
@@ -27,6 +29,14 @@ public class Car<T extends Bdriver> extends Transport implements Competitor {
 
     public String printtype(){
         return this.getBrand() +" "+ this.getModel()+this.btype;
+    }
+
+    public T getDriver() {
+        return driver;
+    }
+
+    public void printDriver(){
+        System.out.println(driver.getFio());
     }
 
     @Override

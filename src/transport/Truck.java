@@ -5,12 +5,15 @@ import enums.TransportType;
 import enums.WeightType;
 import exceptions.TransportTypeException;
 import interfaces.Competitor;
+import mechanic.Mechanic;
+
+import java.util.ArrayList;
 
 public class Truck<T extends Cdriver> extends Transport implements Competitor {
     private T driver;
     private WeightType weight;
-    public Truck(String brand, String model, double engineVolume, TransportType type, T driver, WeightType weight) {
-        super(brand, model, engineVolume, type);
+    public Truck(String brand, String model, double engineVolume, TransportType type, ArrayList<Mechanic> mechanicList, T driver, WeightType weight) {
+        super(brand, model, engineVolume, type, mechanicList);
         this.driver = driver;
         this.weight = weight;
     }
@@ -21,6 +24,14 @@ public class Truck<T extends Cdriver> extends Transport implements Competitor {
 
     public String printweight(){
         return this.getBrand() +" "+ this.getModel()+" "+this.weight;
+    }
+
+    public T getDriver() {
+        return driver;
+    }
+
+    public void printDriver(){
+        System.out.println(driver.getFio());
     }
 
     @Override

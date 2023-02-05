@@ -3,6 +3,10 @@ package transport;
 import enums.BodyType;
 import enums.TransportType;
 import exceptions.TransportTypeException;
+import mechanic.Mechanic;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Transport {
     private final String brand;
@@ -10,9 +14,11 @@ public abstract class Transport {
 
     private double engineVolume;
 
+    private List<Mechanic> mechanicList = new ArrayList<>();
+
     public TransportType type;
 
-    public Transport(String brand,String model, double engineVolume, TransportType type){
+    public Transport(String brand,String model, double engineVolume, TransportType type, ArrayList<Mechanic> mechanicList){
         if(brand==null)
             this.brand = "default";
         else
@@ -32,6 +38,7 @@ public abstract class Transport {
         else
             this.engineVolume = engineVolume;
         this.type = type;
+        this.mechanicList = mechanicList;
     }
 
 
@@ -76,8 +83,18 @@ public abstract class Transport {
             System.out.println(type);
     }
 
+    public void printMechanics(){
+        for (Mechanic mech: mechanicList) {
+            System.out.println(mech.getName());
+        }
+    }
+
     @Override
     public String toString(){
         return this.getBrand() +" "+ this.getModel() +", объем двигателя "+this.engineVolume+" л.";
+    }
+
+    public List<Mechanic> getMechanicList() {
+        return mechanicList;
     }
 }
