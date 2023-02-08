@@ -14,12 +14,15 @@ import transport.Transport;
 import transport.Truck;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<Transport> TransportList = new ArrayList<>();
         ArrayList<Mechanic> MechanicList = new ArrayList<>();
+        Map<Transport, ArrayList> carAndMech = new HashMap<>();
         Bdriver driverb = new Bdriver("BName",5,true);
         Cdriver driverc = new Cdriver("CName",10,true);
         Ddriver driverd = new Ddriver("DName",12,true);
@@ -36,7 +39,12 @@ public class Main {
         TransportList.add(car1);
         TransportList.add(truck1);
         TransportList.add(bus1);
-        for (Transport transp:TransportList) {
+        carAndMech.put(car1, MechanicList);
+        carAndMech.put(truck1,MechanicList);
+        for (Map.Entry<Transport, ArrayList> carmech: carAndMech.entrySet()) {
+            System.out.println("Машина: " + carmech.getKey().getBrand() + " Механики: " + carmech.getValue().toString());
+        }
+       /* for (Transport transp:TransportList) {
             System.out.println(transp.toString());
         }
         mechanic1.doTechService(car1);
@@ -49,7 +57,7 @@ public class Main {
         service.addToQueue(bus1);
         service.techInspection();
 
-        /*try {
+        try {
             car1.passDiagnostic();
         } catch (TransportTypeException e) {
             System.out.println(e);
