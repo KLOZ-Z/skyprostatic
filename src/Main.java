@@ -1,6 +1,7 @@
 import drivers.Bdriver;
 import drivers.Cdriver;
 import drivers.Ddriver;
+import drivers.Driver;
 import enums.BodyType;
 import enums.CapacityType;
 import enums.TransportType;
@@ -13,16 +14,14 @@ import transport.Car;
 import transport.Transport;
 import transport.Truck;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<Transport> TransportList = new ArrayList<>();
         ArrayList<Mechanic> MechanicList = new ArrayList<>();
         Map<Transport, ArrayList> carAndMech = new HashMap<>();
+        Set<Driver> drivers = new HashSet<>();
         Bdriver driverb = new Bdriver("BName",5,true);
         Cdriver driverc = new Cdriver("CName",10,true);
         Ddriver driverd = new Ddriver("DName",12,true);
@@ -36,14 +35,22 @@ public class Main {
         Car<Bdriver> car1 = new Car<>("Brand1","Model1", 2.0,null,MechanicList,driverb, BodyType.SEDAN);
         Truck<Cdriver> truck1 = new Truck<>("Brand2","Model2", 6.0, TransportType.TRUCK,MechanicList,driverc, WeightType.N2);
         Bus<Ddriver> bus1 = new Bus<>("Brand3","Model3", 4.0,TransportType.BUS,MechanicList,driverd, CapacityType.MEDIUM);
-        TransportList.add(car1);
+        drivers.add(driverb);
+        drivers.add(driverc);
+        drivers.add(driverd);
+        drivers.add(driverd);
+        Iterator<Driver> dName  = drivers.iterator();
+        while (dName.hasNext()){
+            System.out.println(dName.next().toString());
+        }
+        /*TransportList.add(car1);
         TransportList.add(truck1);
         TransportList.add(bus1);
         carAndMech.put(car1, MechanicList);
         carAndMech.put(truck1,MechanicList);
-        for (Map.Entry<Transport, ArrayList> carmech: carAndMech.entrySet()) {
+       for (Map.Entry<Transport, ArrayList> carmech: carAndMech.entrySet()) {
             System.out.println("Машина: " + carmech.getKey().getBrand() + " Механики: " + carmech.getValue().toString());
-        }
+        }*/
        /* for (Transport transp:TransportList) {
             System.out.println(transp.toString());
         }

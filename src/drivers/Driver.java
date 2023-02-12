@@ -23,6 +23,11 @@ public class Driver {
         this.license=license;
     }
 
+    @Override
+    public String toString() {
+        return this.fio+" "+this.experience;
+    }
+
     public void start(){}
     public void stop(){}
     public void refuel(){}
